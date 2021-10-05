@@ -70,7 +70,7 @@ defmodule Commanded.Generator.Source.Miro do
               {name, fields} = parse_text(text)
 
               command =
-                case Model.find_command(model, name) do
+                case Model.find_command(model, module, name) do
                   %Command{} = command -> command
                   nil -> Command.new(Module.concat([module, Commands]), name, fields)
                 end

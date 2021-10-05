@@ -102,14 +102,14 @@ defmodule Commanded.Generator.Model do
     end)
   end
 
-  def find_command(%Model{} = model, name) do
+  def find_command(%Model{} = model, module, name) do
     %Model{aggregates: aggregates, commands: commands} = model
 
     aggregates
     |> Stream.flat_map(fn %Aggregate{commands: commands} -> commands end)
     |> Stream.concat(commands)
     |> Enum.find(fn
-      %Command{name: ^name} -> true
+      %Command{module: ^module, name: ^name} -> true
       %Command{} -> false
     end)
   end
