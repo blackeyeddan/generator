@@ -138,8 +138,6 @@ defmodule Commanded.Generator.Model do
   def find_external_system(%Model{} = model, name) do
     %Model{external_systems: external_systems} = model
 
-    IO.puts "=== All external systems:"
-    Enum.each(external_systems, &(IO.puts("   - #{&1.name}")))
     Enum.find(external_systems, fn
       %ExternalSystem{name: ^name} -> true
       %ExternalSystem{} -> false

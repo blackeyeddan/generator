@@ -79,7 +79,6 @@ defmodule Commanded.Generator.Source.Miro do
 
             is_a?(sticker, :event) ->
               {name, fields} = parse_text(sticker["text"])
-              IO.puts("   including event: #{name}")
               include_aggregate_event(model, aggregate, sticker, widgets, [sticker])
 
             true ->
